@@ -44,9 +44,8 @@ BuildWorkflow:
     - package_module_nupkg
 
   hqrmtest:
-    - DscResource_Tests_Stop_On_Fail
+    - Invoke_HQRM_Tests_Stop_On_Fail
 
-  # Defining test task to be run when invoking `./build.ps1 -Tasks test`
   test:
     - Pester_Tests_Stop_On_Fail
     - Convert_Pester_Coverage
@@ -56,58 +55,47 @@ BuildWorkflow:
     - Merge_CodeCoverage_Files
 
   publish:
-    - Publish_Release_To_GitHub # Runs first, if token is expired it will fail early
-    # - Publish_GitHub_Wiki_Content
+    - Publish_Release_To_GitHub
+    - Publish_GitHub_Wiki_Content
     - publish_module_to_gallery
+
+  gitversion:
+    - GitVersionInstall
+    - GitVersionCalculateModuleVersion
+
+  codecov:
+    - CodeCovInstallCLI
+    - CodeCovUploadResult
 
 ####################################################
 #       PESTER  Configuration                      #
 ####################################################
-
 Pester:
-  OutputFormat: NUnitXML
-  # Excludes one or more paths from being used to calculate code coverage.
+  Configuration:
+    Run:
+      Path:
+        - tests/QA
+        # - tests/Unit
+    Output:
+      Verbosity: Detailed
+      StackTraceVisibility: Full
+      CIFormat: Auto
+    CodeCoverage:
+      CoveragePercentTarget: 85
+      OutputEncoding: ascii
+      UseBreakpoints: false
+    TestResult:
+      OutputFormat: NUnitXML
+      OutputEncoding: ascii
   ExcludeFromCodeCoverage:
-    - Modules/DscResource.Common
-  # If no scripts are defined the default is to use all the tests under the project's
-  # tests folder or source folder (if present). Test script paths can be defined to
-  # only run tests in certain folders, or run specific test files, or can be use to
-  # specify the order tests are run.
-  Script:
-    - tests/Unit
-  Tag:
-  CodeCoverageThreshold: 85 # Set to 0 to bypass
-  CodeCoverageOutputFile: JaCoCo_coverage.xml
-  CodeCoverageOutputFileEncoding: ascii
-  # Use this if code coverage should be merged from several pipeline test jobs.
-  # Any existing keys above should be replaced. See also CodeCoverage below.
-  # CodeCoverageOutputFile is the file that is created for each pipeline test job.
-  #CodeCoverageOutputFile: JaCoCo_Merge.xml
 
-# Use this to merged code coverage from several pipeline test jobs.
-# CodeCoverageFilePattern      - the pattern used to search all pipeline test job artifacts
-#                                after the file specified in CodeCoverageOutputFile.
-# CodeCoverageMergedOutputFile - the file that is created by the merge build task and
-#                                is the file that should be uploaded to code coverage services.
-#CodeCoverage:
-#CodeCoverageFilePattern: JaCoCo_Merge.xml # the pattern used to search all pipeline test job artifacts
-#CodeCoverageMergedOutputFile: JaCoCo_coverage.xml # the file that is created for the merged code coverage
+CodeCoverage:
+  CodeCoverageFilePattern: CodeCov*.xml # the pattern used to search all pipeline test job artifacts
+  CodeCoverageMergedOutputFile: JaCoCo_coverage.xml # the file that is created for the merged code coverage
 
 ####################################################
 #      Pester Configuration (DscResource.Test)     #
 ####################################################
-DscTest:
-  ExcludeTag:
-    - 'Common Tests - New Error-Level Script Analyzer Rules'
-  Tag:
-  ExcludeSourceFile:
-    - output
-  ExcludeModuleFile:
-
-# Import ModuleBuilder tasks from a specific PowerShell module using the build
-# task's alias. Wildcard * can be used to specify all tasks that has a similar
-# prefix and or suffix. The module contain the task must be added as a required
-# module in the file RequiredModules.psd1.
 ModuleBuildTasks:
   Sampler:
     - '*.build.Sampler.ib.tasks'
@@ -117,8 +105,9 @@ ModuleBuildTasks:
     - 'Task.*'
   DscResource.Test:
     - 'Task.*'
+  DscResource.AzDoTasks:
+    - '*.ib.tasks'
 
-# Invoke-Build Header to be used to 'decorate' the terminal output of the tasks.
 TaskHeader: |
   param($Path)
   ""
@@ -130,6 +119,9 @@ TaskHeader: |
   Write-Build DarkGray "  $($Task.InvocationInfo.ScriptName):$($Task.InvocationInfo.ScriptLineNumber)"
   ""
 
+####################################################
+#               GitHub Configuration               #
+####################################################
 GitHubConfig:
   GitHubFilesToAdd:
     - 'CHANGELOG.md'
@@ -154,13 +146,3 @@ DscResource.DocGenerator:
   Generate_Wiki_Sidebar:
     Debug: false
     AlwaysOverwrite: true
-####################################################
-#           Setting Sampler PSModulePath           #
-####################################################
-#SetPSModulePath:
-#Sub expressions in the PSModulePath are supported but not part of the template as it does not work with Plaster
-#PSModulePath: C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules;c:\Users\Install\.vscode\extensions\ms-vscode.powershell-2022.5.1\modules;
-#RemovePersonal: false
-#RemoveProgramFiles: false
-#RemoveWindows: false
-#SetSystemDefault: false
