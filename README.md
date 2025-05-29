@@ -5,10 +5,10 @@ This module contains DSC resources for the management and
 configuration of PRODUCT.
 
 <!-- Update with the correct definition number - replace 9999 with the definition number for the pipeline /-->
-[![Build Status](https://dev.azure.com/dsccommunity/DscResource.AzDoTasks/_apis/build/status/dsccommunity.DscResource.AzDoTasks?branchName=main)](https://dev.azure.com/dsccommunity/DscResource.AzDoTasks/_build/latest?definitionId=9999&branchName=main)
-![Azure DevOps coverage (branch)](https://img.shields.io/azure-devops/coverage/dsccommunity/DscResource.AzDoTasks/9999/main)
-[![codecov](https://codecov.io/gh/dsccommunity/DscResource.AzDoTasks/branch/main/graph/badge.svg)](https://codecov.io/gh/dsccommunity/DscResource.AzDoTasks)
-[![Azure DevOps tests](https://img.shields.io/azure-devops/tests/dsccommunity/DscResource.AzDoTasks/9999/main)](https://dsccommunity.visualstudio.com/DscResource.AzDoTasks/_test/analytics?definitionId=9999&contextType=build)
+[![Build Status](https://dev.azure.com/dan-hughes/DscResource.AzDoTasks/_apis/build/status/dan-hughes.DscResource.AzDoTasks?branchName=main)](https://dev.azure.com/dan-hughes/DscResource.AzDoTasks/_build/latest?definitionId=1&branchName=main)
+![Azure DevOps coverage (branch)](https://img.shields.io/azure-devops/coverage/dan-hughes/DscResource.AzDoTasks/1/main)
+[![codecov](https://codecov.io/gh/dan-hughes/DscResource.AzDoTasks/branch/main/graph/badge.svg)](https://codecov.io/gh/dan-hughes/DscResource.AzDoTasks)
+[![Azure DevOps tests](https://img.shields.io/azure-devops/tests/dan-hughes/DscResource.AzDoTasks/1/main)](https://dan-hughes.visualstudio.com/DscResource.AzDoTasks/_test/analytics?definitionId=1&contextType=build)
 [![PowerShell Gallery (with prereleases)](https://img.shields.io/powershellgallery/vpre/DscResource.AzDoTasks?label=DscResource.AzDoTasks%20Preview)](https://www.powershellgallery.com/packages/DscResource.AzDoTasks/)
 [![PowerShell Gallery](https://img.shields.io/powershellgallery/v/DscResource.AzDoTasks?label=DscResource.AzDoTasks)](https://www.powershellgallery.com/packages/DscResource.AzDoTasks/)
 
@@ -33,7 +33,7 @@ A full list of changes in each version can be found in the [change log](CHANGELO
 
 ## Documentation
 
-The documentation can be found in the [DscResource.AzDoTasks Wiki](https://github.com/dsccommunity/DscResource.AzDoTasks/wiki).
+The documentation can be found in the [DscResource.AzDoTasks Wiki](https://github.com/dan-hughes/DscResource.AzDoTasks/wiki).
 The DSC resources schema files is used to automatically update the
 documentation on each PR merge.
 
@@ -42,5 +42,4 @@ documentation on each PR merge.
 You can review the [Examples](/source/Examples) directory in the DscResource.AzDoTasks module
 for some general use scenarios for all of the resources that are in the module.
 
-The resource examples are also available in the [DscResource.AzDoTasks Wiki](https://github.com/dsccommunity/DscResource.AzDoTasks/wiki).
-
+The resource examples are also available in the [DscResource.AzDoTasks Wiki](https://github.com/dan-hughes/DscResource.AzDoTasks/wiki).
