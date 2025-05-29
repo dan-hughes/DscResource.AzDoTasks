@@ -32,7 +32,11 @@
         "keepachangelog",
         "notin",
         "pscmdlet",
-        "steppable"
+        "steppable",
+        "pwsh",
+        "hqrm",
+        "hqrmtest",
+        "dsccommunity"
     ],
     "[markdown]": {
         "files.trimTrailingWhitespace": false,
