@@ -28,7 +28,7 @@ stages:
           vmImage: 'ubuntu-latest'
         steps:
           - task: PowerShell@2
-            name: package
+            name: gtiversion
             displayName: 'Calculate ModuleVersion (GitVersion)'
             inputs:
               filePath: './build.ps1'
