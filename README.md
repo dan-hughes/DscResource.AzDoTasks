@@ -1,8 +1,7 @@
 # DscResource.AzDoTasks
 
 <!-- Update what the product or function is called /-->
-This module contains DSC resources for the management and
-configuration of PRODUCT.
+This module contains PowerShell tasks to use in Azure Pipelines.
 
 <!-- Update with the correct definition number - replace 9999 with the definition number for the pipeline /-->
 [![Build Status](https://dev.azure.com/dan-hughes/DscResource.AzDoTasks/_apis/build/status/dan-hughes.DscResource.AzDoTasks?branchName=main)](https://dev.azure.com/dan-hughes/DscResource.AzDoTasks/_build/latest?definitionId=1&branchName=main)
@@ -34,8 +33,6 @@ A full list of changes in each version can be found in the [change log](CHANGELO
 ## Documentation
 
 The documentation can be found in the [DscResource.AzDoTasks Wiki](https://github.com/dan-hughes/DscResource.AzDoTasks/wiki).
-The DSC resources schema files is used to automatically update the
-documentation on each PR merge.
 
 ### Examples
 
