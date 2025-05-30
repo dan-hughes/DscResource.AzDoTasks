@@ -320,7 +320,7 @@ process
             Loading Build Tasks defined in the source/tasks folder (will override
             the ones imported above if same task name).
 
-            Using 'source/task/' is changed specific for this module DscResource.DocGenerator
+            Using 'source/tasks/' is changed specific for this module DscResource.DocGenerator
             to be able to dogfood its own tasks
         #>
         Get-ChildItem -Path 'source/tasks/' -Recurse -Include '*.ps1' -ErrorAction Ignore |
