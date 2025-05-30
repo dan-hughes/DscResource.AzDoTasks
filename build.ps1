@@ -325,7 +325,7 @@ process
         #>
         Get-ChildItem -Path 'source/tasks/' -Recurse -Include '*.ps1' -ErrorAction Ignore |
             ForEach-Object {
-                "Importing file $($_.BaseName)" | Write-Verbose -Verbose
+                "Importing file $($_.BaseName)" | Write-Verbose
 
                 . $_.FullName
             }
