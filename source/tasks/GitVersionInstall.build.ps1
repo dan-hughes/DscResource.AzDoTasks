@@ -5,8 +5,7 @@ param
     $GitVersionVersion = (property GitVersionVersion '5.*')
 )
 
-task GitVersionInstall
-{
+task GitVersionInstall {
     . Set-SamplerTaskVariable
 
     try

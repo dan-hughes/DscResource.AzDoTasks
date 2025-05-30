@@ -106,8 +106,6 @@ ModuleBuildTasks:
     - 'Task.*'
   DscResource.Test:
     - 'Task.*'
-  DscResource.AzDoTasks:
-    - '*.ib.tasks'
 
 TaskHeader: |
   param($Path)
