@@ -1,6 +1,6 @@
 param ()
 
-task GitVersionCalculateModuleVersion {
+task GitVersion_Calculate_Module_Version {
     $gitVersionObject = dotnet-gitversion | ConvertFrom-Json
 
     $gitVersionObject.PSObject.Properties.ForEach{

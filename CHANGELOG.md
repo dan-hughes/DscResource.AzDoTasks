@@ -5,6 +5,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Updated pipeline to be able to self-test the tasks.
+
 ### Added
 
 - Tasks:
