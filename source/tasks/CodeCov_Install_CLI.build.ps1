@@ -1,4 +1,4 @@
-task CodeCovInstallCLI {
+task CodeCov_Install_CLI {
     curl 'https://keybase.io/codecovsecurity/pgp_keys.asc' | gpg --no-default-keyring --import
     curl -Os 'https://cli.codecov.io/latest/linux/codecov'
     curl -Os 'https://cli.codecov.io/latest/linux/codecov.SHA256SUM'

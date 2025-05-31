@@ -27,6 +27,6 @@ param
 
 )
 
-task CodeCovUploadResult {
-    ./codecov upload-process -f "./$(buildFolderName)/$(testResultFolderName)/JaCoCo_coverage.xml"
+task CodeCov_Upload_Result {
+    ./codecov upload-process -f 'output/testResults/JaCoCo_coverage.xml'
 }
