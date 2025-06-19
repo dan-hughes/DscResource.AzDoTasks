@@ -28,11 +28,11 @@ stages:
           vmImage: 'ubuntu-latest'
         steps:
           - task: PowerShell@2
-            name: gtiversion
+            name: gitversion
             displayName: 'Calculate ModuleVersion (GitVersion)'
             inputs:
               filePath: './build.ps1'
-              arguments: '-ResolveDependency -tasks gitversion'
+              arguments: '-ResolveDependency -tasks build,gitversion' # Need build here to dogfood own task
               pwsh: true
           - task: PowerShell@2
             name: package
@@ -85,17 +85,21 @@ stages:
         displayName: 'Unit'
         strategy:
           matrix:
-            windows_ps:
+            Windows PS:
               vmImage: 'windows-latest'
+              artifact: 'windowsps'
               pwsh: true
-            windows_wps:
+            Windows WPS:
               vmImage: 'windows-latest'
+              artifact: 'windowswps'
               pwsh: false
-            linux:
+            Linux:
               vmImage: 'ubuntu-latest'
+              artifact: 'linux'
               pwsh: true
-            macos:
+            MacOS:
               vmImage: 'macos-latest'
+              artifact: 'macos'
               pwsh: true
         pool:
           vmImage: $(vmImage)
@@ -128,7 +132,7 @@ stages:
             displayName: 'Publish Test Artifact'
             inputs:
               targetPath: '$(buildFolderName)/$(testResultFolderName)/'
-              artifactName: $(testArtifactName)
+              artifactName: '$(testArtifactName)$(artifact)'
               # If several pipeline jobs are generating code coverage, replace above with this:
               #artifactName: 'CodeCoverageWindows' # Can be any, in the pipeline, unique name
 

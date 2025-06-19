@@ -60,12 +60,12 @@ BuildWorkflow:
     - publish_module_to_gallery
 
   gitversion:
-    - GitVersionInstall
-    - GitVersionCalculateModuleVersion
+    - GitVersion_Install
+    - GitVersion_Calculate_Module_Version
 
   codecov:
-    - CodeCovInstallCLI
-    - CodeCovUploadResult
+    - CodeCov_Install_CLI
+    - CodeCov_Upload_Result
 
 ####################################################
 #       PESTER  Configuration                      #
@@ -106,8 +106,6 @@ ModuleBuildTasks:
     - 'Task.*'
   DscResource.Test:
     - 'Task.*'
-  DscResource.AzDoTasks:
-    - '*.ib.tasks'
 
 TaskHeader: |
   param($Path)
