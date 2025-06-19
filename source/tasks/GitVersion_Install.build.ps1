@@ -18,5 +18,4 @@ task GitVersion_Install {
     {
         Write-Build Red "Error trying to install GitVersion.Tool"
     }
-
 }

@@ -16,6 +16,7 @@ variables:
   buildArtifactName: output
   testResultFolderName: testResults
   testArtifactName: testResults
+  sourceFolderName: source
   defaultBranch: main
   Agent.Source.Git.ShallowFetchDepth: 0 # override ShallowFetchDepth
 
@@ -178,6 +179,8 @@ stages:
               filePath: './build.ps1'
               arguments: '-tasks codecov'
               pwsh: true
+            env:
+              CODECOV_TOKEN: $(CODECOV_TOKEN)
 
   - stage: Deploy
     dependsOn: Test
