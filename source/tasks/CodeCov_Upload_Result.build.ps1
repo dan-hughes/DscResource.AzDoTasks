@@ -54,5 +54,5 @@ task CodeCov_Upload_Result {
 
     Write-Build White "Uploading Code Coverage to CodeCov"
 
-    ./codecov upload-process --disable-search --fail-on-error --file $CodeCoverageMergedOutputFile
+    Start-Process codecov -ArgumentList "upload-process --disable-search --fail-on-error --file $CodeCoverageMergedOutputFile"
 }
