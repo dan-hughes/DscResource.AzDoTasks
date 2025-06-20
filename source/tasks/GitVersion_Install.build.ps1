@@ -9,7 +9,6 @@
         This is a build task that is primarily meant to be run by Invoke-Build but
         wrapped by the Sampler project's build.ps1 (https://github.com/gaelcolas/Sampler).
 #>
-
 param
 (
     # Build Configuration object

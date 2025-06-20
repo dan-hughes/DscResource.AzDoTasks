@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Updated pipeline to be able to self-test the tasks.
+- Allow GitVersion Version to be configurable.
 
 ### Added
 
